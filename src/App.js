@@ -1,26 +1,19 @@
-import React, { Component } from 'react'
-import Home from './Home'
+import React from 'react'
+import { connect } from 'react-redux'
 
-export class App extends Component {
-  state = {
-    name: "sourav"
-  }
+const App = (props) => {
+  console.log(props);
+  return (
+    <div>
+      <h1>Hello</h1>
+    </div>
+  )
+}
 
-  changeName(name){
-    this.setState({
-      name: name
-    })
-  } 
-
-  render() {
-    return (
-      <div>
-        {this.state.name}
-        {/* <button onClick={() => {this.changeName("lili")}}>Click me</button> */}
-        <Home handleChange={(name) => this.changeName(name)}/>
-      </div>
-    )
+const mapStateToProps = (state) => {
+  return{
+    myName: state.name
   }
 }
 
-export default App
+export default connect(mapStateToProps)(App)
