@@ -5,7 +5,8 @@ const App = (props) => {
   console.log(props);
   return (
     <div>
-      <h1>Hello</h1>
+      <h1>Hello {props.myName}</h1>
+      <button onClick={() => props.changeName("sourav")}>Change Name</button>
     </div>
   )
 }
@@ -16,4 +17,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = (dispatch) => {
+  return{
+    changeName: (name) => {dispatch({type: 'CHANGE_NAME', payload: name})}
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(App)
