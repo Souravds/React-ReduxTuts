@@ -1,25 +1,28 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { changeNameAction } from './actions/actions';
 
 const App = (props) => {
   console.log(props);
   return (
     <div>
       <h1>Hello {props.myName}</h1>
-      <button onClick={() => props.changeName("sourav")}>Change Name</button>
+      <button onClick={() => props.changeName()}>Change Name</button>
     </div>
   )
 }
 
+//Receive state values from store
 const mapStateToProps = (state) => {
   return{
     myName: state.name
   }
 }
 
+//Instruct reducer to manipulate data
 const mapDispatchToProps = (dispatch) => {
   return{
-    changeName: (name) => {dispatch({type: 'CHANGE_NAME', payload: name})}
+    changeName: () => {dispatch(changeNameAction())}
   }
 }
 

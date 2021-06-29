@@ -3,14 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore } from "redux";
+import { applyMiddleware, compose, createStore } from "redux";
 //Use Provider for => React communicate with Redux
 import { Provider } from 'react-redux';
 //Use Reducer for => Modify and Derived state data from it
 import reducer from './reducers/reducer';
+import thunk from 'redux-thunk';
 
 // Create Redux Store and pass the reducer state values
-const store = createStore(reducer);
+// const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+//Compose enhancer ( to use redux dev tools and thunk at the same time)
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <React.StrictMode>

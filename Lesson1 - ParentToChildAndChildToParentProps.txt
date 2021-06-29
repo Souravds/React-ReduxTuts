@@ -1,0 +1,48 @@
+App.js =>
+import React, { Component } from 'react'
+import Home from './Home'
+
+export class App extends Component {
+  state = {
+    name: "sourav"
+  }
+
+  changeName(name){
+    this.setState({
+      name: name
+    })
+  } 
+
+  render() {
+    return (
+      <div>
+        {this.state.name}
+        {/* <button onClick={() => {this.changeName("lili")}}>Click me</button> */}
+        <Home handleChange={(name) => this.changeName(name)}/>
+      </div>
+    )
+  }
+}
+
+export default App
+
+******************************************************
+Home.js=>
+import React, { Component } from 'react'
+
+export class Home extends Component {
+  state = {
+    homeName: "suresh"
+  }
+  render() {
+    return (
+      <div>
+        <h2>I am Home</h2>
+        <button onClick={() => this.props.handleChange(this.state.homeName)}>Click me</button>
+        </div>
+    )
+  }
+}
+
+export default Home
+
