@@ -7,6 +7,7 @@ const App = (props) => {
   return (
     <div>
       <h1>Hello {props.myName}</h1>
+      {props.mywish.map(item => <h4>{item}</h4>)}
       <button onClick={() => props.changeName()}>Change Name</button>
     </div>
   )
@@ -15,7 +16,8 @@ const App = (props) => {
 //Receive state values from store
 const mapStateToProps = (state) => {
   return{
-    myName: state.name
+    myName: state.name,
+    mywish : state.wish
   }
 }
 
