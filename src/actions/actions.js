@@ -12,3 +12,8 @@ export const changeNameAction = () => {
     dispatch({type: 'CHANGE_NAME', payload: res[0].name})
   }
 }
+
+export const changeWishAction = () => {
+  return (dispatch) => dispatch({type: 'CHANGE_WISH', payload: 'code'})
+  
+}
